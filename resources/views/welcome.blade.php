@@ -28,7 +28,8 @@
             }
 
             video {
-                width: 100%;
+                width: 45%;
+                border: 1px solid red;
             }
 
             .full-height {
@@ -91,6 +92,9 @@
         </style>
     </head>
     <body>
+        <div id="errorMsg">
+            <p>Error Messages go here</p>
+        </div>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -112,10 +116,8 @@
                     <i class="far fa-play-circle"></i>
                     
                 </div>
-                <video class="hide"></video>
-            </div>
-            <div id="errorMsg">
-                
+                <video id="localStream" class="hide"></video>
+                <video id="remoteStream" class="hide"></video>
             </div>
         </div>
     </body>
@@ -123,7 +125,8 @@
         'use strict';
 
         // Put variables in global scope to make them available to the browser console.
-        var video = document.querySelector('video');
+        var video = document.querySelector('#localStream');
+        var remoteStream = document.querySelector('#remoteStream');
         var constraints = window.constraints = {
             audio: true,
             video: true
@@ -168,8 +171,9 @@
             document.querySelector(".title").classList.add("hide");
             video.classList.remove("hide");
             video.classList.add("show");
+            remoteStream.classList.remove("hide");
+            remoteStream.classList.add("show");
             // document.getElementById("video-container").innerHTML = video;
-            
         });
         
     </script>
