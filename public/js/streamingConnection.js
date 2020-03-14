@@ -1,8 +1,8 @@
 'use strict';
 
 // Put variables in global scope to make them available to the browser console.
-var video = document.querySelector('#localStream');
-var remoteStream = document.querySelector('#remoteStream');
+var video = document.querySelector('#localVideo');
+var remoteStream = document.querySelector('#remoteVideo');
 var constraints = window.constraints = {
     audio: true,
     video: true

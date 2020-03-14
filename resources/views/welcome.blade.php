@@ -35,16 +35,21 @@
             @endif
 
             <div class="content" id="video-container">
-                <div class="title m-b-md" id="pause-screen">
+                <div class="title m-b-md hide" id="pause-screen">
                     <p>LiveStream</p>
                     <i class="far fa-play-circle"></i>
                     
                 </div>
-                <video id="localStream" class="hide"></video>
-                <video id="remoteStream" class="hide"></video>
+                <video id="localVideo" class=""></video>
+                <video id="remoteVideo" class=""></video>
             </div>
+            <button id="startButton">Start</button>
+            <button id="callButton">Call</button>
+            <button id="hangupButton">Hang up</button>
         </div>
     </body>
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/streamingConnection.js') }}"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script type="text/javascript" src="{{ asset('js/connectRemote.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ asset('js/streamingConnection.js') }}"></script> -->
 </html>
