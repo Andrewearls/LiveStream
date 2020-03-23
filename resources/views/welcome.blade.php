@@ -42,14 +42,16 @@
                 </div>
                 <video id="localVideo" class=""></video>
                 <video id="remoteVideo" class=""></video>
+                <textarea id="localChat" disabled></textarea>
+                <textarea id="remoteChat" disabled></textarea>
             </div>
             <button id="startButton">Start</button>
-            <button id="callButton">Call</button>
+            <button id="sendButton">Send</button>
             <button id="hangupButton">Hang up</button>
         </div>
     </body>
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
-    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-    <script type="text/javascript" src="{{ asset('js/connectRemote.js') }}"></script>
+    <!-- <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script> -->
+    <!-- <script type="text/javascript" src="{{ asset('js/connectRemote.js') }}"></script> -->
     <!-- <script type="text/javascript" src="{{ asset('js/streamingConnection.js') }}"></script> -->
 </html>
