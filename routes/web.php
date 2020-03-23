@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/sender', function () {
+	return view('sender/main');
+});
+
+Route::get('/reciever', function () {
+	return view('reciever/main');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
+
