@@ -11,5 +11,7 @@
 @endsection
 
 @section('scripts')
-	scripts
+    <script type="text/javascript" src="{{ asset('js/connection.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/sender.js') }}"></script>
+
 @endsection

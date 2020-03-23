@@ -1,6 +1,5 @@
 var startButton = document.getElementById("startButton");
 var sendButton = document.getElementById("sendButton");
-var localChat = document.getElementById("localChat");
 
 function sendMessage(msg) {
 	let obj = {
@@ -15,10 +14,9 @@ function sendMessage(msg) {
 startButton.addEventListener("click", function(){
 	makeConnection();
 	startButton.setAttribute("disabled", "");
-	localChat.removeAttribute("disabled");
 });
 
 sendButton.addEventListener("click", function () {
-	var outgoingMessage = localChat.value;
+	var outgoingMessage = "sadf";
 	sendMessage(outgoingMessage);
 })
