@@ -14,14 +14,16 @@ class BroadcastingVideo implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $message;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($message)
     {
-        //
+        $this->message = $message;
     }
 
     /**
@@ -31,7 +33,7 @@ class BroadcastingVideo implements ShouldBroadcast
      */
     public function broadcastWith()
     {
-        return ['msg' => "sadF"];
+        return ['msg' => $this->message];
     }
 
     /**
@@ -41,6 +43,6 @@ class BroadcastingVideo implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('LiveWithAndrew');
+        return new Channel('LiveStream-development');
     }
 }

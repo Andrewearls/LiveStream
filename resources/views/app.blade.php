@@ -12,6 +12,23 @@
 
         <!-- Scripts -->
         <script src="https://kit.fontawesome.com/c6eca12015.js" crossorigin="anonymous"></script>
+        <script src="https://js.pusher.com/5.1/pusher.min.js"></script>
+
+        <script>
+
+            // Enable pusher logging - don't include this in production
+            Pusher.logToConsole = true;
+
+            var pusher = new Pusher('45f7e2d005912d917ae1', {
+              cluster: 'us3',
+              forceTLS: true
+            });
+
+            var channel = pusher.subscribe('my-channel');
+            channel.bind('my-event', function(data) {
+              alert(JSON.stringify(data));
+            });
+        </script>
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/main.css') }}"></link>

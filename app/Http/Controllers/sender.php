@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\BroadcastingVideo;
 
 class Sender extends Controller
 {
@@ -13,7 +14,7 @@ class Sender extends Controller
 
     public function goLive()
     {
-    	event(new BroadcastingVideo());
+    	event(new BroadcastingVideo('sadF'));
     	return "live";
     }
 }

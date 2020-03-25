@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/test', function () {
+	return view('pusher.test');
+});
 
 Route::get('/sender', 'Sender@main');
 Route::get('/live', 'Sender@goLive')->name('goLive');
