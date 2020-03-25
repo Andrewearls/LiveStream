@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class BroadcastingVideo
+class BroadcastingVideo implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -25,12 +25,22 @@ class BroadcastingVideo
     }
 
     /**
+     * Get the data to broadcast.
+     *
+     * @return array
+     */
+    public function broadcastWith()
+    {
+        return ['msg' => "sadF"];
+    }
+
+    /**
      * Get the channels the event should broadcast on.
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new Channel('LiveWithAndrew');
     }
 }
