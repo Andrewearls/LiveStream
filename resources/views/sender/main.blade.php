@@ -5,6 +5,7 @@
 @endsection
 
 @section('buttons')
+	<a href="{{route('goLive')}}">Go Live</a>
 	<button id="startButton">Start</button>
     <button id="sendButton">Send</button>
     <button id="hangupButton">Hang up</button>

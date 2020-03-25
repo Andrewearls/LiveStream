@@ -13,13 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/sender', function () {
-	return view('sender/main');
-});
 
-Route::get('/reciever', function () {
-	return view('reciever/main');
-});
+
+Route::get('/sender', 'Sender@main');
+Route::get('/live', 'Sender@goLive')->name('goLive');
 
 Route::get('/', function () {
     return view('welcome');
