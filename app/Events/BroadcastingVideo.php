@@ -33,7 +33,7 @@ class BroadcastingVideo implements ShouldBroadcast
      */
     public function broadcastWith()
     {
-        return ['msg' => $this->message];
+        return ['data' => $this->message];
     }
 
     /**
@@ -43,6 +43,6 @@ class BroadcastingVideo implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('LiveStream-development');
+        return ['my-channel'];
     }
 }

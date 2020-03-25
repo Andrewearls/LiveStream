@@ -14,7 +14,7 @@
         <script src="https://kit.fontawesome.com/c6eca12015.js" crossorigin="anonymous"></script>
         <script src="https://js.pusher.com/5.1/pusher.min.js"></script>
 
-        <script>
+        <!-- <script>
 
             // Enable pusher logging - don't include this in production
             Pusher.logToConsole = true;
@@ -28,7 +28,7 @@
             channel.bind('my-event', function(data) {
               alert(JSON.stringify(data));
             });
-        </script>
+        </script> -->
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/main.css') }}"></link>

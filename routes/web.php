@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Events\MyEvent;
+use Pusher\Pusher;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +19,15 @@ Route::get('/test', function () {
 	return view('pusher.test');
 });
 
+Route::get('/goLive', function () {
+	event(new MyEvent('sadF'));
+});
+
 Route::get('/sender', 'Sender@main');
 Route::get('/live', 'Sender@goLive')->name('goLive');
 
 Route::get('/', function () {
     return view('welcome');
 });
+
 

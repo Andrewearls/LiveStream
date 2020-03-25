@@ -13,7 +13,7 @@
     });
 
     var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
+    channel.bind('BroadcastingVideo', function(data) {
       alert(JSON.stringify(data));
     });
   </script>
