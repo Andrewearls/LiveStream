@@ -15,7 +15,7 @@ class Sender extends Controller
 
     public function goLive()
     {
-    	event(new MyEvent('hello world'));
+    	event(new BroadcastingVideo('sadF'));
     	return view('sender.main');
     }
 }

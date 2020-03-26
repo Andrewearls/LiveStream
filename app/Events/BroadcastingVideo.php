@@ -31,10 +31,10 @@ class BroadcastingVideo implements ShouldBroadcast
      *
      * @return array
      */
-    public function broadcastWith()
-    {
-        return ['data' => $this->message];
-    }
+    // public function broadcastWith()
+    // {
+    //     return ['data' => $this->message];
+    // }
 
     /**
      * Get the channels the event should broadcast on.
@@ -43,6 +43,11 @@ class BroadcastingVideo implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['my-channel'];
+        return ['open-channel'];
+    }
+
+    public function broadcastAs()
+    {
+        return 'BroadcastingVideo';
     }
 }
