@@ -13,9 +13,9 @@ class Sender extends Controller
     	return view('sender.main');
     }
 
-    public function goLive()
+    public function goLive(Request $request)
     {
-    	event(new BroadcastingVideo('sadF'));
-    	return view('sender.main');
+    	// event(new BroadcastingVideo('$request'));
+    	return $request;
     }
 }

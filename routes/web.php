@@ -20,7 +20,7 @@ Route::get('/test', function () {
 });
 
 Route::get('/sender', 'Sender@main');
-Route::get('/live', 'Sender@goLive')->name('goLive');
+Route::post('/live', 'Sender@goLive')->name('goLive');
 
 Route::get('/', function () {
     return view('welcome');

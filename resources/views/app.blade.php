@@ -13,6 +13,8 @@
         <!-- Scripts -->
         <script src="https://kit.fontawesome.com/c6eca12015.js" crossorigin="anonymous"></script>
         <script src="https://js.pusher.com/5.1/pusher.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 
         <!-- <script>
 
