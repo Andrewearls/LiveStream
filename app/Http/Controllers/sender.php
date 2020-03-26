@@ -15,7 +15,7 @@ class Sender extends Controller
 
     public function goLive(Request $request)
     {
-    	// event(new BroadcastingVideo('$request'));
-    	return $request;
+    	event(new BroadcastingVideo($request->data));
+    	return $request->data;
     }
 }

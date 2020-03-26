@@ -11,10 +11,10 @@ function sendMsg(msg, url) {
         dataType: "json",
         data: {
         	_token: CSRF_TOKEN,
-            o: dataString
+            data: dataString
         },
         success: function (data) {
-           alert('Success');
+           alert(data);
 
         },
         error: function () {
