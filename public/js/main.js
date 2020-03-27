@@ -36,8 +36,8 @@ function handleICECandidateEvent(event) {
 }
 
 function handleTrackEvent(event) {
-  document.getElementById("received_video").srcObject = event.streams[0];
-  document.getElementById("hangup-button").disabled = false;
+  // document.getElementById("received_video").srcObject = event.streams[0];
+  document.getElementById("hangupButton").disabled = false;
 }
 
 function handleNegotiationNeededEvent() {

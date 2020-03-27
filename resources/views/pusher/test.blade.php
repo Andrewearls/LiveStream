@@ -14,7 +14,7 @@
 
     var channel = pusher.subscribe('open-channel');
     channel.bind('BroadcastingVideo', function(data) {
-      alert(JSON.stringify(data));
+      alert(JSON.stringify(data['message']));
     });
   </script>
 </head>
