@@ -29222,7 +29222,8 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
   key: "45f7e2d005912d917ae1",
   cluster: "us3",
-  forceTLS: true
+  forceTLS: true //This should be true in production
+
 });
 
 /***/ }),

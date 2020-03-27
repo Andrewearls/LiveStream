@@ -1,8 +1,25 @@
 <!DOCTYPE html>
 <head>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Pusher Test</title>
+  <script src="{{ asset('js/app.js') }}"></script>
   <script src="https://js.pusher.com/5.1/pusher.min.js"></script>
+  
   <script>
+
+    // Echo.channel('open-channel')
+    // .listen('BroadcastingVideo', (e) => {
+    //   alert(e.message);
+    // });
+
+    // document.onreadystatechange = () => {
+    //   if (document.readyState === 'complete') {
+    //     console.log("doc is ready");
+    //     Echo.channel('open-channel').listen('BroadcastingVideo', function(e) {
+    //       console.log(e);
+    //     });
+    //   }
+    // };
 
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
@@ -14,7 +31,7 @@
 
     var channel = pusher.subscribe('open-channel');
     channel.bind('BroadcastingVideo', function(data) {
-      alert(JSON.stringify(data['message']));
+      console.log(JSON.stringify(data['message']));
     });
   </script>
 </head>
