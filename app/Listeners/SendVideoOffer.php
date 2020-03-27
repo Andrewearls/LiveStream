@@ -26,6 +26,6 @@ class SendVideoOffer
      */
     public function handle(BroadcastingVideo $event)
     {
-        //
+        return $event->message;
     }
 }
