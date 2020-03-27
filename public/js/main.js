@@ -2,8 +2,9 @@
 
 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 var myPeerConnection;
+var reportError;
 
-function sendMsg(msg, url) {
+function sendToServer(msg, url) {
 	var dataString = JSON.stringify(msg);
 
 	$.ajax({
@@ -30,7 +31,7 @@ function handleICECandidateEvent(event) {
       type: "new-ice-candidate",
       // target: targetUsername,
       candidate: event.candidate
-    });
+    },url);
   }
 }
 
