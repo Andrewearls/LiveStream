@@ -1,6 +1,7 @@
 'use strict';
 
 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+var myPeerConnection;
 
 function sendMsg(msg, url) {
 	var dataString = JSON.stringify(msg);
@@ -22,6 +23,54 @@ function sendMsg(msg, url) {
         }
     });
 };
+
+function handleICECandidateEvent(event) {
+  if (event.candidate) {
+    sendToServer({
+      type: "new-ice-candidate",
+      // target: targetUsername,
+      candidate: event.candidate
+    });
+  }
+}
+
+function handleTrackEvent(event) {
+  document.getElementById("received_video").srcObject = event.streams[0];
+  document.getElementById("hangup-button").disabled = false;
+}
+
+function handleNegotiationNeededEvent() {
+  myPeerConnection.createOffer().then(function(offer) {
+    return myPeerConnection.setLocalDescription(offer);
+  })
+  .then(function() {
+    sendToServer({
+      // name: myUsername,
+      // target: targetUsername,
+      type: "video-offer",
+      sdp: myPeerConnection.localDescription
+    });
+  })
+  .catch(reportError);
+}
+
+function createPeerConnection() {
+  myPeerConnection = new RTCPeerConnection({
+      iceServers: [     // Information about ICE servers - Use your own!
+        {
+          urls: "stun:stun.stunprotocol.org"
+        }
+      ]
+  });
+
+  myPeerConnection.onicecandidate = handleICECandidateEvent;
+  myPeerConnection.ontrack = handleTrackEvent;
+  myPeerConnection.onnegotiationneeded = handleNegotiationNeededEvent;
+  // myPeerConnection.onremovetrack = handleRemoveTrackEvent;
+  // myPeerConnection.oniceconnectionstatechange = handleICEConnectionStateChangeEvent;
+  // myPeerConnection.onicegatheringstatechange = handleICEGatheringStateChangeEvent;
+  // myPeerConnection.onsignalingstatechange = handleSignalingStateChangeEvent;
+}
 
 
 
