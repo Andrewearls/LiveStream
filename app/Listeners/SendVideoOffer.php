@@ -6,7 +6,7 @@ use App\Events\BroadcastingVideo;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class SendVideoOffer
+class SendVideoOffer //Should rename this should persist the broadcasting data to the database
 {
     /**
      * Create the event listener.
