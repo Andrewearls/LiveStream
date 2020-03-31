@@ -14,12 +14,12 @@ startButton.addEventListener("click", function(){
 
 sendButton.addEventListener("click", function () {
 	createPeerConnection();
-	// navigator.mediaDevices.getUserMedia(mediaConstraints)
- //    .then(function(localStream) {
- //      	document.getElementById("localVideo").srcObject = localStream;
- //      	localStream.getTracks().forEach(track => myPeerConnection.addTrack(track, localStream));
- //    })
- //    .catch(handleGetUserMediaError);
-	var outgoingMessage = "sadf";
-	sendToServer(outgoingMessage, url);
+	navigator.mediaDevices.getUserMedia(mediaConstraints)
+    .then(function(localStream) {
+      	document.getElementById("localVideo").srcObject = localStream;
+      	localStream.getTracks().forEach(track => myPeerConnection.addTrack(track, localStream));
+    })
+    .catch(handleGetUserMediaError);
+	// var outgoingMessage = "sadf";
+	// sendToServer(outgoingMessage, url);
 });

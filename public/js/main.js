@@ -16,17 +16,17 @@ function sendToServer(msg, url) {
             data: dataString
         },
         success: function (data) {
-           alert(data);
+           console.log("Data sent: " + data);
 
         },
         error: function () {
-         alert('Error');
+         console.log('Sending Message Error!');
         }
     });
 };
 
 function handleRecievedMessage(message) {
-	alert(message);
+	console.log("Recieved Message: " + message);
 }
 
 function handleICECandidateEvent(event) {
@@ -40,7 +40,7 @@ function handleICECandidateEvent(event) {
 }
 
 function handleTrackEvent(event) {
-  // document.getElementById("received_video").srcObject = event.streams[0];
+  document.getElementById("received_video").srcObject = event.streams[0];
   document.getElementById("hangupButton").disabled = false;
 }
 
@@ -58,7 +58,15 @@ function handleNegotiationNeededEvent() {
   })
   .catch(reportError);
 }
-
+/*
+ * 
+ * Establish a connection object
+ * Set the ICE server properties
+ * Set the ICE candidate and send it to the server
+ * Manage recieved video
+ * Create an offer and send it to the server
+ *
+ */
 function createPeerConnection() {
   myPeerConnection = new RTCPeerConnection({
       iceServers: [     // Information about ICE servers - Use your own!
