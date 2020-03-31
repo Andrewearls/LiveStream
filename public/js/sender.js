@@ -1,5 +1,6 @@
 var startButton = document.getElementById("startButton");
 var sendButton = document.getElementById("sendButton");
+var localVideo = document.getElementById('localVideo');
 var url = sendButton.getAttribute('data-href');
 var mediaConstraints = {
   	audio: true, // We want an audio track
@@ -16,8 +17,9 @@ sendButton.addEventListener("click", function () {
 	createPeerConnection();
 	navigator.mediaDevices.getUserMedia(mediaConstraints)
     .then(function(localStream) {
-      	document.getElementById("localVideo").srcObject = localStream;
+      	localVideo.srcObject = localStream;
       	localStream.getTracks().forEach(track => myPeerConnection.addTrack(track, localStream));
+      	localVideo.play();
     })
     .catch(handleGetUserMediaError);
 	// var outgoingMessage = "sadf";

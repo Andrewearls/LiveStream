@@ -25,38 +25,36 @@ function sendToServer(msg, url) {
     });
 };
 
-function handleRecievedMessage(message) {
-	console.log("Recieved Message: " + message);
-}
-
 function handleICECandidateEvent(event) {
-  if (event.candidate) {
-    sendToServer({
-      type: "new-ice-candidate",
-      // target: targetUsername,
-      candidate: event.candidate
-    },url);
-  }
+  	if (event.candidate) {
+    	sendToServer({
+      		type: "new-ice-candidate",
+      		// target: targetUsername,
+      		candidate: event.candidate
+    	},url);
+  	}
 }
 
 function handleTrackEvent(event) {
-  document.getElementById("received_video").srcObject = event.streams[0];
-  document.getElementById("hangupButton").disabled = false;
+  	document.getElementById("received_video").srcObject = event.streams[0];
+  	console.log("attempting to play stream");
+  	document.getElementById("hangupButton").disabled = false;
 }
 
 function handleNegotiationNeededEvent() {
-  myPeerConnection.createOffer().then(function(offer) {
-    return myPeerConnection.setLocalDescription(offer);
-  })
-  .then(function() {
-    sendToServer({
-      // name: myUsername,
-      // target: targetUsername,
-      type: "video-offer",
-      sdp: myPeerConnection.localDescription
-    });
-  })
-  .catch(reportError);
+  	myPeerConnection.createOffer().then(function(offer) {
+    	return myPeerConnection.setLocalDescription(offer);
+  	})
+  	.then(function() {
+    	sendToServer({
+      		// name: myUsername,
+      		// target: targetUsername,
+      		type: "video-offer",
+      		sdp: myPeerConnection.localDescription
+    	});
+    	console.log("The SDP is: " + JSON.stringify(myPeerConnection.localDescription));
+  	})
+  	.catch(reportError);
 }
 /*
  * 
@@ -68,21 +66,21 @@ function handleNegotiationNeededEvent() {
  *
  */
 function createPeerConnection() {
-  myPeerConnection = new RTCPeerConnection({
-      iceServers: [     // Information about ICE servers - Use your own!
-        {
-          urls: "stun:stun.stunprotocol.org"
-        }
-      ]
-  });
+  	myPeerConnection = new RTCPeerConnection({
+      	iceServers: [     // Information about ICE servers - Use your own!
+        	{
+          		urls: "stun:stun.stunprotocol.org"
+        	}
+      	]
+  	});
 
-  myPeerConnection.onicecandidate = handleICECandidateEvent;
-  myPeerConnection.ontrack = handleTrackEvent;
-  myPeerConnection.onnegotiationneeded = handleNegotiationNeededEvent;
-  // myPeerConnection.onremovetrack = handleRemoveTrackEvent;
-  // myPeerConnection.oniceconnectionstatechange = handleICEConnectionStateChangeEvent;
-  // myPeerConnection.onicegatheringstatechange = handleICEGatheringStateChangeEvent;
-  // myPeerConnection.onsignalingstatechange = handleSignalingStateChangeEvent;
+  	myPeerConnection.onicecandidate = handleICECandidateEvent;
+  	myPeerConnection.ontrack = handleTrackEvent;
+  	myPeerConnection.onnegotiationneeded = handleNegotiationNeededEvent;
+  	// myPeerConnection.onremovetrack = handleRemoveTrackEvent;
+  	// myPeerConnection.oniceconnectionstatechange = handleICEConnectionStateChangeEvent;
+  	// myPeerConnection.onicegatheringstatechange = handleICEGatheringStateChangeEvent;
+  	// myPeerConnection.onsignalingstatechange = handleSignalingStateChangeEvent;
 }
 
 
