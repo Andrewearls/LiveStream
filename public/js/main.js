@@ -25,6 +25,10 @@ function sendToServer(msg, url) {
     });
 };
 
+function handleRecievedMessage(message) {
+	alert(message);
+}
+
 function handleICECandidateEvent(event) {
   if (event.candidate) {
     sendToServer({

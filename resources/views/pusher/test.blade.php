@@ -3,6 +3,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Pusher Test</title>
   <script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ asset('js/main.js') }}"></script>
   <script src="https://js.pusher.com/5.1/pusher.min.js"></script>
   
   <script>
@@ -31,7 +32,7 @@
 
     var channel = pusher.subscribe('open-channel');
     channel.bind('BroadcastingVideo', function(data) {
-      console.log(JSON.stringify(data['message']));
+      handleRecievedMessage(data['message']);
     });
   </script>
 </head>
