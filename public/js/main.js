@@ -34,9 +34,16 @@ function handleICECandidateEvent(event) {
   	}
 }
 
+function handleNewICECandidateMsg(msg) {
+  	var candidate = new RTCIceCandidate(msg.candidate);
+
+  	myPeerConnection.addIceCandidate(candidate)
+    .catch(reportError);
+}
+
 function handleTrackEvent(event) {
+  	console.log("event: " + JSON.stringify(event));
   	document.getElementById("received_video").srcObject = event.streams[0];
-  	console.log("attempting to play stream");
   	document.getElementById("hangupButton").disabled = false;
 }
 
@@ -50,8 +57,8 @@ function handleNegotiationNeededEvent() {
       		// target: targetUsername,
       		type: "video-offer",
       		sdp: myPeerConnection.localDescription
-    	});
-    	console.log("The SDP is: " + JSON.stringify(myPeerConnection.localDescription));
+    	}, url);
+    	// console.log("The SDP is: " + JSON.stringify(myPeerConnection.localDescription));
   	})
   	.catch(reportError);
 }
