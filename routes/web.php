@@ -22,6 +22,8 @@ Route::get('/test', function () {
 Route::get('/sender', 'Sender@main');
 Route::post('/sender', 'Sender@goLive')->name('goLive');
 
+Route::post('/response', 'Reciever@response')->name('respond');
+
 Route::get('/', function () {
     return view('welcome');
 });

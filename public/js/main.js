@@ -17,7 +17,6 @@ function sendToServer(msg, url) {
         },
         success: function (data) {
            console.log("Data sent: " + data);
-
         },
         error: function () {
          console.log('Sending Message Error!');

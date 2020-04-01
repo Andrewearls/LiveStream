@@ -45,7 +45,7 @@
     with event name <code>my-event</code>.
   </p>
   <video id="recieved_video" style="border: 1px solid red;"></video>
-  <button id="play">Play</button>
+  <button id="play_button" data-href="{{ route('respond') }}" >Play</button>
   <script type="text/javascript">
     var playButton = document.getElementById("play");
     var recievedVideo = document.getElementById("recieved_video");

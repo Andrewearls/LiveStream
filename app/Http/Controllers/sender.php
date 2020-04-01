@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Events\BroadcastingVideo;
-use App\Events\MyEvent;
 
 class Sender extends Controller
 {

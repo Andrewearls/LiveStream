@@ -1,3 +1,11 @@
+var playButton;
+var url;
+
+$( document ).ready(function() {
+  var playButton = document.getElementById('play_button');
+  var url = playButton.getAttribute('data-href');
+});
+  
 function handleGetUserMediaError(data) {
   console.log("User Media Error: " + JSON.stringify(data));
 };
