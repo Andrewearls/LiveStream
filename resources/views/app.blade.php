@@ -17,7 +17,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
-        <!-- <script>
+        <script>
 
             // Enable pusher logging - don't include this in production
             Pusher.logToConsole = true;
@@ -29,9 +29,9 @@
 
             var channel = pusher.subscribe('my-channel');
             channel.bind('my-event', function(data) {
-              alert(JSON.stringify(data));
+              // alert(JSON.stringify(data));
             });
-        </script> -->
+        </script>
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/main.css') }}"></link>
@@ -61,6 +61,8 @@
             @yield('buttons')
         </div>
     </body>
+    <script type="text/javascript" src="{{ asset('js/sendMessages.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/eventHandlers.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
     @yield('scripts')
     <!-- <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script> -->

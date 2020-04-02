@@ -25,7 +25,7 @@ function createPeerConnection() {
 
   	myPeerConnection.onicecandidate = handleICECandidateEvent;
   	myPeerConnection.ontrack = handleTrackEvent;
-  	myPeerConnection.onnegotiationneeded = handleNegotiationNeededEvent;
+  	// myPeerConnection.onnegotiationneeded = handleNegotiationNeededEvent;
   	// myPeerConnection.onremovetrack = handleRemoveTrackEvent;
   	// myPeerConnection.oniceconnectionstatechange = handleICEConnectionStateChangeEvent;
   	// myPeerConnection.onicegatheringstatechange = handleICEGatheringStateChangeEvent;

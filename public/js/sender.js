@@ -4,7 +4,7 @@ var localVideo = document.getElementById('localVideo');
 
 var user = "sender";
 var mediaConstraints = {
-  	audio: true, // We want an audio track
+  	// audio: true, // We want an audio track
   	video: true // ...and we want a video track
 };
 url = sendButton.getAttribute('data-href');
@@ -18,6 +18,7 @@ sendButton.addEventListener("click", function () {
     .then(function(localStream) {
       	localVideo.srcObject = localStream;
       	localStream.getTracks().forEach(track => myPeerConnection.addTrack(track, localStream));
+      	handleNegotiationNeededEvent();
       	// Play the local video locally
       	localVideo.play();
     })
