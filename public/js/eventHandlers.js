@@ -1,11 +1,11 @@
 // Report any event errors
 function reportError(data) {
-	console.log("Error in reporting: " + data);
+	console.warn("Error in reporting: " + data);
 }
 
 // Report any User Media Errors
 function handleGetUserMediaError(data) {
-  console.log("User Media Error: " + data);
+  console.warn("User Media Error: " + data);
 };
 
 // Transmit an ICE Candidate
