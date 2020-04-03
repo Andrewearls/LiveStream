@@ -60,7 +60,7 @@ function handleRecievedMessage(msg) {
 
   // recieving the message sdp
   var desc = new RTCSessionDescription(msg.sdp);
-  console.log("recieved the msg.sdp: " + JSON.stringify(desc));
+  // console.log("recieved the msg.sdp: " + JSON.stringify(desc));
 
   // setting the remote description to the message sdp
   myPeerConnection.setRemoteDescription(desc)
