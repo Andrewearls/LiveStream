@@ -1,7 +1,11 @@
+function handleRecievedMessage(data) {
+  console.log(data);
+};
+
 // Report any event errors
 function reportError(data) {
 	console.warn("Error in reporting: " + data);
-}
+};
 
 // Report any User Media Errors
 function handleGetUserMediaError(data) {
@@ -17,7 +21,7 @@ function handleICECandidateEvent(event) {
   		candidate: event.candidate
   	},url);
 	}
-}
+};
 
 // Process the recieved ICE Candidate
 function handleNewICECandidateMsg(msg) {
@@ -25,14 +29,14 @@ function handleNewICECandidateMsg(msg) {
 
   	myPeerConnection.addIceCandidate(candidate)
     .catch(reportError("failed to add new ice candidate"));
-}
+};
 
 // Attach the recieved stream to a video element
 function handleTrackEvent(event) {
   	// console.log("track event: " + JSON.stringify(event));
   	document.getElementById("received_video").srcObject = event.streams[0];
   	document.getElementById("hangupButton").disabled = false;
-}
+};
 
 // Starts a call
 function handleNegotiationNeededEvent() {
@@ -48,51 +52,51 @@ function handleNegotiationNeededEvent() {
     	// console.log("The SDP is: " + JSON.stringify(myPeerConnection.localDescription));
   	})
   	.catch(reportError);
-}
-
-function handleRecievedMessage(msg) {
-  // console.log("Recieved Message: " + msg);
-  var msg = JSON.parse(msg);
-  var localStream = null;
-
-  // creating the peer connection
-  createPeerConnection();
-
-  // recieving the message sdp
-  var desc = new RTCSessionDescription(msg.sdp);
-  // console.log("recieved the msg.sdp: " + JSON.stringify(desc));
-
-  // setting the remote description to the message sdp
-  myPeerConnection.setRemoteDescription(desc)
-  // .then(function () {
-  //   console.log("recieved media constraints");
-  //   return navigator.mediaDevices.getUserMedia(mediaConstraints);
-  // })
-  // .then(function(stream) {
-  //   console.log("setting stream");
-  //   localStream = stream;
-  //   document.getElementById("local_video").srcObject = localStream;
-
-  //   localStream.getTracks().forEach(track => myPeerConnection.addTrack(track, localStream));
-  // })
-  .then(function() {
-    console.log("creating answer");
-    return myPeerConnection.createAnswer();
-  })
-  .then(function(answer) {
-    console.log("setting local description");
-    return myPeerConnection.setLocalDescription(answer);
-  })
-  .then(function() {
-    console.log("sending answer");
-    var msg = {
-      name: user,
-      // target: targetUsername,
-      type: "video-answer",
-      sdp: myPeerConnection.localDescription
-    };
-    sendToServer(msg, url);
-    console.log('sent a response message');
-  })
-  .catch(handleGetUserMediaError);
 };
+
+// function handleRecievedMessage(msg) {
+//   // console.log("Recieved Message: " + msg);
+//   var msg = JSON.parse(msg);
+//   var localStream = null;
+
+//   // creating the peer connection
+//   createPeerConnection();
+
+//   // recieving the message sdp
+//   var desc = new RTCSessionDescription(msg.sdp);
+//   // console.log("recieved the msg.sdp: " + JSON.stringify(desc));
+
+//   // setting the remote description to the message sdp
+//   myPeerConnection.setRemoteDescription(desc)
+//   // .then(function () {
+//   //   console.log("recieved media constraints");
+//   //   return navigator.mediaDevices.getUserMedia(mediaConstraints);
+//   // })
+//   // .then(function(stream) {
+//   //   console.log("setting stream");
+//   //   localStream = stream;
+//   //   document.getElementById("local_video").srcObject = localStream;
+
+//   //   localStream.getTracks().forEach(track => myPeerConnection.addTrack(track, localStream));
+//   // })
+//   .then(function() {
+//     console.log("creating answer");
+//     return myPeerConnection.createAnswer();
+//   })
+//   .then(function(answer) {
+//     console.log("setting local description");
+//     return myPeerConnection.setLocalDescription(answer);
+//   })
+//   .then(function() {
+//     console.log("sending answer");
+//     var msg = {
+//       name: user,
+//       // target: targetUsername,
+//       type: "video-answer",
+//       sdp: myPeerConnection.localDescription
+//     };
+//     sendToServer(msg, url);
+//     console.log('sent a response message');
+//   })
+//   .catch(handleGetUserMediaError);
+// };
