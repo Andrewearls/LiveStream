@@ -1,13 +1,13 @@
 @extends('app')
 
 @section('content')
-	<video id="remoteVideo" class=""></video>
+	<video id="recieved_video" class=""></video>
 @endsection
 
 @section('buttons')
-	buttons
+  	<button id="play_button" data-href="{{ route('respond') }}" >Play</button>
 @endsection
 
 @section('scripts')
-	scripts
+	<script type="text/javascript" src="{{ asset('js/reciever.js') }}"></script>
 @endsection
