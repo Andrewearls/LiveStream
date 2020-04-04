@@ -1,6 +1,6 @@
 function sendToServer(msg) {
 	msg.userName = user;
-	msg.sdp = myPeerConnection.localDescription;
+	// msg.sdp = myPeerConnection.localDescription;
 	var dataString = JSON.stringify(msg);
 
 	$.ajax({

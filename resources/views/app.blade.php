@@ -23,14 +23,15 @@
             Pusher.logToConsole = false;
 
             var pusher = new Pusher('45f7e2d005912d917ae1', {
-              cluster: 'us3',
-              forceTLS: true
+                cluster: 'us3',
+                forceTLS: true
             });
 
-            var channel = pusher.subscribe('my-channel');
-            channel.bind('my-event', function(data) {
-              // alert(JSON.stringify(data));
+            var channel = pusher.subscribe('open-channel');
+            channel.bind('BroadcastingVideo', function(data) {
+                handleRecievedMessage(data);
             });
+            
         </script>
 
         <!-- Styles -->
