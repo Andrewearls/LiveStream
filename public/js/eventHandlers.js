@@ -1,6 +1,3 @@
-function handleRecievedMessage(data) {
-  console.log(data);
-};
 
 // Report any event errors
 function reportError(data) {
@@ -54,49 +51,49 @@ function handleNegotiationNeededEvent() {
   	.catch(reportError);
 };
 
-// function handleRecievedMessage(msg) {
-//   // console.log("Recieved Message: " + msg);
-//   var msg = JSON.parse(msg);
-//   var localStream = null;
+function handleRecievedMessage(msg) {
+  // console.log("Recieved Message: " + msg);
+  var msg = JSON.parse(msg);
+  var localStream = null;
 
-//   // creating the peer connection
-//   createPeerConnection();
+  // creating the peer connection
+  createPeerConnection();
 
-//   // recieving the message sdp
-//   var desc = new RTCSessionDescription(msg.sdp);
-//   // console.log("recieved the msg.sdp: " + JSON.stringify(desc));
+  // recieving the message sdp
+  var desc = new RTCSessionDescription(msg.sdp);
+  // console.log("recieved the msg.sdp: " + JSON.stringify(desc));
 
-//   // setting the remote description to the message sdp
-//   myPeerConnection.setRemoteDescription(desc)
-//   // .then(function () {
-//   //   console.log("recieved media constraints");
-//   //   return navigator.mediaDevices.getUserMedia(mediaConstraints);
-//   // })
-//   // .then(function(stream) {
-//   //   console.log("setting stream");
-//   //   localStream = stream;
-//   //   document.getElementById("local_video").srcObject = localStream;
+  // setting the remote description to the message sdp
+  myPeerConnection.setRemoteDescription(desc)
+  // .then(function () {
+  //   console.log("recieved media constraints");
+  //   return navigator.mediaDevices.getUserMedia(mediaConstraints);
+  // })
+  // .then(function(stream) {
+  //   console.log("setting stream");
+  //   localStream = stream;
+  //   document.getElementById("local_video").srcObject = localStream;
 
-//   //   localStream.getTracks().forEach(track => myPeerConnection.addTrack(track, localStream));
-//   // })
-//   .then(function() {
-//     console.log("creating answer");
-//     return myPeerConnection.createAnswer();
-//   })
-//   .then(function(answer) {
-//     console.log("setting local description");
-//     return myPeerConnection.setLocalDescription(answer);
-//   })
-//   .then(function() {
-//     console.log("sending answer");
-//     var msg = {
-//       name: user,
-//       // target: targetUsername,
-//       type: "video-answer",
-//       sdp: myPeerConnection.localDescription
-//     };
-//     sendToServer(msg, url);
-//     console.log('sent a response message');
-//   })
-//   .catch(handleGetUserMediaError);
-// };
+  //   localStream.getTracks().forEach(track => myPeerConnection.addTrack(track, localStream));
+  // })
+  .then(function() {
+    console.log("creating answer");
+    return myPeerConnection.createAnswer();
+  })
+  .then(function(answer) {
+    console.log("setting local description");
+    return myPeerConnection.setLocalDescription(answer);
+  })
+  .then(function() {
+    console.log("sending answer");
+    var msg = {
+      name: user,
+      // target: targetUsername,
+      type: "video-answer",
+      sdp: myPeerConnection.localDescription
+    };
+    sendToServer(msg, url);
+    console.log('sent a response message');
+  })
+  .catch(handleGetUserMediaError);
+};

@@ -29,9 +29,9 @@
 
             var channel = pusher.subscribe('open-channel');
             channel.bind('BroadcastingVideo', function(data) {
-                handleRecievedMessage(data);
+                handleRecievedMessage(data.message);
             });
-            
+
         </script>
 
         <!-- Styles -->

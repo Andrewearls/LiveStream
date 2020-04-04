@@ -11,6 +11,13 @@ user = "reciever";
   url = playButton.getAttribute('data-href');
 // });
 
+function recieveMessage(data) {
+  
+  if(data.userName == "sender") {
+    handleRecivedMessage(data);
+  };
+};
+
 playButton.addEventListener('click', function () {
 	alert('attempting to sent message');
 	sendToServer('Message sent');

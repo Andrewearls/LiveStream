@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Broadcasting\InteractsWithSockets;
 use App\Events\BroadcastingVideo;
 
 class Sender extends Controller
@@ -14,7 +15,7 @@ class Sender extends Controller
 
     public function goLive(Request $request)
     {
-    	event(new BroadcastingVideo($request->data));
+    	broadcast(new BroadcastingVideo($request->data))->toOthers();
     	return $request->data;
     }
 }

@@ -9,6 +9,13 @@ var mediaConstraints = {
 };
 url = sendButton.getAttribute('data-href');
 
+function recieveMessage(data) {
+  
+  if(data.userName == "reciever") {
+    handleRecivedMessage(data);
+  };
+};
+
 sendButton.addEventListener("click", function () {
 	// Create and offer a connection to peer
 	createPeerConnection();
