@@ -30,6 +30,7 @@ function createPeerConnection() {
   	// myPeerConnection.oniceconnectionstatechange = handleICEConnectionStateChangeEvent;
   	// myPeerConnection.onicegatheringstatechange = handleICEGatheringStateChangeEvent;
   	// myPeerConnection.onsignalingstatechange = handleSignalingStateChangeEvent;
+    // alert('clicked the send button');
 }
 
 
